@@ -1,0 +1,8 @@
+Tổng kết today: 
+- Học xong redux basics bao gồm :
+
+ - store, createstore,
+ - reducer, rootReducer
+ - action: 
+ - combineReducer:
+ Project: Chưa thay đổi
