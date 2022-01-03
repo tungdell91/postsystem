@@ -10,7 +10,6 @@ import {
   Modal,
   Box,
   Typography,
-  Input,
   TextField,
 } from "@mui/material";
 import { Paper } from "@mui/material";
@@ -38,7 +37,14 @@ const CommentList = () => {
     });
     console.log(record);
   };
-  const handleEditClose = () => setEditOpen(false);
+  const handleEditClose = () => {
+    setEditOpen(false);
+    setInputValue({
+      user_id: "",
+      title: "",
+      body: "",
+    });
+  };
 
   // Save API info into variable
 
@@ -73,8 +79,8 @@ const CommentList = () => {
 
   //Get data from https://gorest.co.in/public/v1/posts //
   const fetchURL = "https://gorest.co.in/public/v1/posts";
-  useEffect(async () => {
-    await fetchData();
+  useEffect(() => {
+    fetchData();
     //put fetchURL here to render once at a time
   }, []);
 
@@ -182,10 +188,8 @@ const CommentList = () => {
                   axios.defaults.headers
                 )
                 .then((res) => {
-                  console.log(res);
-                  console.log(res.data);
-
-                  alert("Post Successfully");
+                  fetchData();
+                  setOpen(false);
                 });
             }}
           >
@@ -287,8 +291,7 @@ const CommentList = () => {
                           )
                           .then((res) => {
                             e.preventDefault();
-                            console.log(res);
-                            console.log(res.data);
+                            fetchData();
                           });
                       }
                     }}
