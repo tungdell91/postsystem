@@ -6,3 +6,8 @@ Tổng kết today:
  - action: 
  - combineReducer:
  Project: Chưa thay đổi
++ Update tối 3/1 :
+
+- Đã xong !
+- Giải quyết UI cho nó đẹp nữa là xong!
+ => Let's focus more on redux !!!
