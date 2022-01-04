@@ -15,12 +15,10 @@ const NavBar = () => {
             <SupervisorAccountIcon />
           </IconButton>
       
-          <a><Typography variant="h6" color="inherit" component="div">
-            Home
-          </Typography></a>
-          <a><Typography variant="h6" color="inherit" component="div" sx={{marginLeft: '20px'}}>
-            PMS
-          </Typography></a>
+          <Typography variant="h6" color="inherit" component="div">
+            Posts Management System
+          </Typography>
+      
 
           
         </Toolbar>

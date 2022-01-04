@@ -20,7 +20,7 @@ axios.defaults.headers = {
     "Bearer 1dc413990299ee6e8618d4eb9c11574a75ed36fcf5194d302a7965724447010a",
 };
 
-const CommentList = () => {
+const TableContent = () => {
   // Button Action
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -132,7 +132,7 @@ const CommentList = () => {
       </Button>
       {/*Add New User Pop Up Here*/}
       <Modal open={open} onClose={handleClose}>
-        <Box sx={editStyle}>
+        <Box sx={style}>
           <Typography
             id="modal-modal-title"
             variant="h6"
@@ -225,7 +225,7 @@ const CommentList = () => {
                 <TableCell>
                   <Button onClick={() => handleEditOpen(post)}>Edit</Button>
                   <Modal open={editOpen} onClose={handleEditClose}>
-                    <Box sx={style}>
+                    <Box sx={editStyle}>
                       <Typography
                         id="modal-modal-title"
                         variant="h6"
@@ -283,14 +283,13 @@ const CommentList = () => {
                   </Modal>
 
                   <Button
-                    onClick={(e) => {
+                    onClick={() => {
                       if (window.confirm(`Are you sure you want to delete?`)) {
                         axios
                           .delete(
                             `https://gorest.co.in/public/v1/posts/${post.id}`
                           )
-                          .then((res) => {
-                            e.preventDefault();
+                          .then(() => {
                             fetchData();
                           });
                       }
@@ -308,4 +307,4 @@ const CommentList = () => {
   );
 };
 
-export default CommentList;
+export default TableContent;
