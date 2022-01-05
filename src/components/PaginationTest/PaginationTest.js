@@ -18,6 +18,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from '@mui/icons-material/Delete'
+import Avatar from '@mui/material/Avatar';
+import { deepPurple, deepOrange } from '@mui/material/colors';
 
 
 const PaginationTest = () => {
@@ -107,13 +109,16 @@ const PaginationTest = () => {
                   <TableRow key={post.id}>
                     <TableCell
                       sx={{ border: "1px solid #ccc", textAlign: "center" }}
-                    >
+                    > 
+                    <Avatar  sx={{ bgcolor: deepOrange[900] }}>
                       {post.id}
+                      </Avatar>
                     </TableCell>
                     <TableCell
                       sx={{ border: "1px solid #ccc", textAlign: "center" }}
                     >
-                      {post.user_id}
+                    <Avatar sx={{ bgcolor: deepPurple[500] }}>{post.user_id}</Avatar>
+                      
                     </TableCell>
                     <TableCell
                       sx={{ border: "1px solid #ccc", textAlign: "center" }}
