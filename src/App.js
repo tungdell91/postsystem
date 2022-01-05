@@ -3,6 +3,8 @@ import React from "react";
 import NavBar from "./components/Navbar/NavBar";
 import PaginationTest from "./components/PaginationTest/PaginationTest";
 import AddPost from "./components/AddPost/AddPost";
+
+
 const App = () => {
   return (
     <div>
@@ -15,8 +17,14 @@ const App = () => {
         <br />
         <AddPost />
         <PaginationTest />
+       
+        
+
+        
       </main>
-      <footer></footer>
+      <footer>
+       
+      </footer>
     </div>
   );
 };

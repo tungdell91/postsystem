@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Box } from "@mui/system";
-import { Modal, Typography, Button, TextField } from "@mui/material";
+import { Modal, Typography, Button, TextField, Container } from "@mui/material";
 //Authorize token to POST request
 axios.defaults.headers = {
   Authorization:
@@ -66,7 +66,7 @@ const AddPost = () => {
   };
 
   return (
-    <>
+    <Container component={Box}>
       <Button
         onClick={handleOpen}
         variant="contained"
@@ -149,7 +149,7 @@ const AddPost = () => {
           </Button>
         </Box>
       </Modal>
-    </>
+    </Container>
   );
 };
 

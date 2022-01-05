@@ -1,41 +1,146 @@
 import React from "react";
-import { Pagination, CssBaseline, Container, Grid, Box, TableCell, TableRow } from "@mui/material";
+import {
+  Pagination,
+  Button,
+  Table,
+  TableContainer,
+  TableHead,
+  TableBody,
+  CssBaseline,
+  Container,
+  Grid,
+  Box,
+  TableCell,
+  TableRow
+
+} from "@mui/material";
 import { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from "axios";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from '@mui/icons-material/Delete'
+
 
 const PaginationTest = () => {
-    
-    const [posts, setPosts] = useState([]);
-    const [page, setPage] = useState(1);
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+
+
+
+
   
-    useEffect(() => {
-        const loadPosts = async () => {
-            const res = await axios.get(`https://gorest.co.in/public/v1/posts?page=${page}`);
-            setPosts(res.data.data);
-          };
-        
-        loadPosts();  
-    }, [page]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      const res = await axios.get(
+        `https://gorest.co.in/public/v1/posts?page=${page}`
+      );
+      setPosts(res.data.data);
+    };
+    loadPosts();
+  }, [page]);
+
   return (
-  
-  <div> 
-     <CssBaseline />
+    <div>
+      <CssBaseline />
       <Container component={Box} py={3}>
         <Grid>
-       
-          {posts.map((post) => (
-              
-              <TableRow key={post.id}>
-                <TableCell>{post.id}</TableCell>
-                <TableCell>{post.user_id}</TableCell>
-                <TableCell>{post.title}</TableCell>
-                <TableCell>{post.body}</TableCell>
-                <TableCell>
-                  Fix  
-                </TableCell>
-              </TableRow>
-            ))}
+          <TableContainer>
+            <Table
+              sx={{ width: "100%", margin: "auto", border: "0.5px solid #ccc" }}
+            >
+              <TableHead>
+                <TableRow
+                  sx={{
+                    textTransform: "uppercase",
+                    backgroundColor: "#1976d2",
+                  }}
+                >
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      color: "#fff",
+                      border: "1px solid #ccc",
+                    }}
+                  >
+                    Posts Id
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      color: "#fff",
+                      border: "1px solid #ccc",
+                    }}
+                  >
+                    User Id
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      color: "#fff",
+                      border: "1px solid #ccc",
+                    }}
+                  >
+                    Title
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      color: "#fff",
+                      border: "1px solid #ccc",
+                    }}
+                  >
+                    Description
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      color: "#fff",
+                      border: "1px solid #ccc",
+                    }}
+                  >
+                    Action
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {posts.map((post) => (
+                  <TableRow key={post.id}>
+                    <TableCell
+                      sx={{ border: "1px solid #ccc", textAlign: "center" }}
+                    >
+                      {post.id}
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "1px solid #ccc", textAlign: "center" }}
+                    >
+                      {post.user_id}
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "1px solid #ccc", textAlign: "center" }}
+                    >
+                      {post.title}
+                    </TableCell>
+                    <TableCell
+                      sx={{ border: "1px solid #ccc", textAlign: "center" }}
+                    >
+                      {post.body}
+                    </TableCell>
+                    <TableCell sx={{ border: "1px solid #ccc" }}>
+
+                      <Button>
+                        <EditIcon />
+                      </Button> 
+                      <Button>
+                        <DeleteIcon />
+                      </Button>
+
+                      
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
         <Box py={3} display="flex" justifyContent="center">
           <Pagination
@@ -43,14 +148,13 @@ const PaginationTest = () => {
             color="secondary"
             variant="outlined"
             onChange={(e, value) => {
-                setPage(value)
-                
-                }}
+              setPage(value);
+            }}
           />
         </Box>
       </Container>
-  </div>
-  )
+    </div>
+  );
 };
 
 export default PaginationTest;
