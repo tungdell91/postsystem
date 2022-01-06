@@ -8,7 +8,7 @@ axios.defaults.headers = {
     "Bearer 1dc413990299ee6e8618d4eb9c11574a75ed36fcf5194d302a7965724447010a",
 };
 
-const AddPost = () => {
+const EditPost = () => {
   
 
   // Declare states for this Button
@@ -47,7 +47,6 @@ const AddPost = () => {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
-    
   };
 
   // Reload API actions :
@@ -73,7 +72,7 @@ const AddPost = () => {
         variant="contained"
         sx={{ marginLeft: "15px", marginBottom: "40px" }}
       >
-        + Add New Post
+        Edit Post
       </Button>
       {/*Add New User Pop Up Here*/}
       <Modal open={open} onClose={handleClose}>
@@ -86,7 +85,7 @@ const AddPost = () => {
             color="primary"
           >
             {" "}
-            Add New post{" "}
+            Edit post{" "}
           </Typography>
           <Typography>User ID</Typography>
 
@@ -123,7 +122,7 @@ const AddPost = () => {
             sx={{ marginTop: "20px" }}
             onClick={(e) => {
               axios
-                .post(
+                .put(
                   `https://gorest.co.in/public/v1/posts`,
                   {
                     user_id: inputValue.user_id,
@@ -140,7 +139,7 @@ const AddPost = () => {
                 });
             }}
           >
-            Submit
+            Edit
           </Button>
           <Button
             onClick={handleClose}
@@ -154,4 +153,4 @@ const AddPost = () => {
   );
 };
 
-export default AddPost;
+export default EditPost;
